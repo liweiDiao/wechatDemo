@@ -1,5 +1,6 @@
 package com.dlw.weChat.service.impl;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,6 +19,7 @@ import com.dlw.weChat.message.resp.Music;
 import com.dlw.weChat.message.resp.MusicMessage;
 import com.dlw.weChat.message.resp.NewsMessage;
 import com.dlw.weChat.message.resp.TextMessage;
+
 import com.dlw.weChat.utils.MessageUtil;
 import com.dlw.weChat.utils.StringUtil;
 import com.dlw.weChat.service.CoreService;
@@ -71,7 +73,7 @@ public class CoreServiceImpl implements CoreService{
 				String eventType = requestMap.get("Event");
 				// 订阅
 				if (eventType.equals(MessageUtil.EVENT_TYPE_SUBSCRIBE)) {
-					respContent = "谢谢您的关注！我是公众号服务人员，回复“?”显示帮助菜单";
+					respContent = "谢谢您的关注！我是大帅哥～～～刁立伟~哈哈，回复“?”显示帮助菜单";
 				} else if (eventType.equals(MessageUtil.EVENT_TYPE_UNSUBSCRIBE)) { // 取消订阅
 					// TODO 取消订阅后用户再收不到公众号发送的消息，因此不需要回复消息
 				} else if (eventType.equals(MessageUtil.EVENT_TYPE_CLICK)) { // 自定义菜单点击事件
@@ -119,6 +121,8 @@ public class CoreServiceImpl implements CoreService{
 //		String createTime = StringUtil.formatTime(requestMap.get("CreateTime"));
 		//内容
 		String content = requestMap.get("Content");
+		
+			
 		if(StringUtil.isQqFace(content)){
 			textMessage.setContent(content);
 		}else if("?".equals(content) || "？".equals(content)){

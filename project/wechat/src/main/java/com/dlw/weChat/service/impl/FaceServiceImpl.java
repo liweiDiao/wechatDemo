@@ -9,10 +9,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.util.StringUtils;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+import com.dlw.common.utils.GetProperties;
 import com.dlw.weChat.model.Face;
+import com.dlw.weChat.utils.StringUtil;
 
 /**
  * 人脸检测服务
@@ -67,11 +71,23 @@ public class FaceServiceImpl {
 		List<Face> faceList = new ArrayList<Face>();
 		try {
 			// 拼接Face++人脸检测的请求地址
-			String queryUrl = "http://apicn.faceplusplus.com/v2/detection/detect?url=URL&api_secret=API_SECRET&api_key=API_KEY";
+			String queryUrl = GetProperties.getConstValueByKey("faceUrl");
+			if(StringUtils.isEmpty(queryUrl)){
+				queryUrl = "http://apicn.faceplusplus.com/v2/detection/detect?url=URL&api_secret=API_SECRET&api_key=API_KEY";
+			}
+			
 			// 对URL进行编码
 			queryUrl = queryUrl.replace("URL",java.net.URLEncoder.encode(picUrl, "UTF-8"));
-			queryUrl = queryUrl.replace("API_KEY", "");//API_KEY
-			queryUrl = queryUrl.replace("API_SECRET", "");//API_SECRET
+			String apiKey = GetProperties.getConstValueByKey("apiKey");
+			if(StringUtils.isEmpty(apiKey)){
+				apiKey = "";
+			}
+			String apiSecret = GetProperties.getConstValueByKey("apiSecret");
+			if(StringUtils.isEmpty(apiSecret)){
+				apiSecret = "";
+			}
+			queryUrl = queryUrl.replace("API_KEY", apiKey);//API_KEY
+			queryUrl = queryUrl.replace("API_SECRET", apiSecret);//API_SECRET
 			// 调用人脸检测接口
 			String json = httpRequest(queryUrl);
 			// 解析返回json中的Face列表
@@ -163,7 +179,7 @@ public class FaceServiceImpl {
 			for (Face face : faceList) {
 				buffer.append(face.getRaceValue()).append("人种,");
 				buffer.append(face.getGenderValue()).append(",");
-				buffer.append(face.getAgeValue()).append("岁左右");
+				buffer.append(face.getAgeValue()).append("岁左右,");
 				buffer.append("微笑程度:");
 				buffer.append(face.getSmilingValue()).append("\n");
 			}

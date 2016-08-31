@@ -5,13 +5,12 @@
 	<artifactId>wechat</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>wechat Maven Webapp</name>
+	<name>wechar Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>4.1.6.RELEASE</spring.version>
-		<hibernate.version>4.3.9.Final</hibernate.version>
 		<jackson.version>2.5.0</jackson.version>
 		<activemq>5.9.0</activemq>
 	</properties>
@@ -71,7 +70,7 @@
 		</dependency>
 
 		<!-- hibernate -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
@@ -81,7 +80,7 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-ehcache</artifactId>
 			<version>${hibernate.version}</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- log4j -->
 		<dependency>
