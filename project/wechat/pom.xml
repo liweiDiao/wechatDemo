@@ -10,7 +10,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.version>4.1.6.RELEASE</spring.version>
+		<spring.version>4.3.18.RELEASE</spring.version>
 		<jackson.version>2.9.6</jackson.version>
 		<activemq>5.9.0</activemq>
 	</properties>
@@ -100,7 +100,7 @@
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-			<version>1.8.4</version>
+			<version>1.9.1</version>
 		</dependency>
 
 		<!-- servlet -->
@@ -135,7 +135,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.2.3</version>
+			<version>1.2.47</version>
 		</dependency>
 
 		<dependency>
@@ -173,7 +173,7 @@
 		<dependency>
 			<groupId>com.thoughtworks.xstream</groupId>
 			<artifactId>xstream</artifactId>
-			<version>1.4.2</version>
+			<version>1.4.10</version>
 		</dependency>
 
 	</dependencies>
